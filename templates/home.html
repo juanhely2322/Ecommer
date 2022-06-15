@@ -1,0 +1,21 @@
+{%extends "index.html"%}
+{% block title %}Home{% endblock %}
+
+{% block main %}
+
+    <h1>ZAPATOS</h1>
+        <section>
+            {%for product in products %}
+                <article>
+                    <h2>{{product.name}}</h2>
+                    <p>{{product.price}}</p>
+                    <img src="{{product.image}}">
+
+                </article>
+            {%endfor%}
+
+        </section>
+    
+
+
+{% endblock %}

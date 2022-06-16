@@ -4,13 +4,13 @@
 {% block main %}
 
     <h1>ZAPATOS</h1>
-        <section>
+        <section class="product">
             {%for product in products %}
-                <article>
+                <article >
                     <h2>{{product.name}}</h2>
-                    <p>{{product.price}}</p>
-                    <img src="{{product.image}}">
-
+                    <p>Presio: ${{product.price}}</p>
+                    <img  src="{{product.image}}" >
+                    <a href="/cart/add/{{ product.id }}">Agregar al carrito</a>
                 </article>
             {%endfor%}
 

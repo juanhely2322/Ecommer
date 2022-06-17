@@ -1,0 +1,25 @@
+{%extends "index.html"%}
+
+{%block main %}
+<form method="POST" action="/auth/login/">
+
+    {%csrf_token%}
+    <div>
+        <label for="email">Usuario</label>
+        <input type="email" name="email">
+    </div>
+    <div>
+        <label for="password">Contraseña</label>
+        <input type="password" name="password">
+    </div>
+    
+
+    <button>Iniciar sesion</button>
+
+
+</form>
+    {%if error%}
+        <p>{{error}}</p>
+    {%endif%}
+
+{%endblock%}

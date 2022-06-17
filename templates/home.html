@@ -9,9 +9,11 @@
                 <article >
                     <h2>{{product.name}}</h2>
                     <p>Presio: ${{product.price}}</p>
-                    <img  src="{{product.image}}" >
                     <a href="/cart/add/{{ product.id }}">Agregar al carrito</a>
+                    <img class="image" src="{{product.image}}" >
+                    
                 </article>
+                
             {%endfor%}
 
         </section>

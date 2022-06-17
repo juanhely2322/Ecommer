@@ -1,6 +1,17 @@
 <nav class="navbar">
     <ul class="links">
         <li><a class="link" href="/">Home</a></li>
-        <li><a class="link" href="/login">Inicio de sesion</a></li>
+        
+        {%if user.is_authenticated%}
+
+         <li><a class="link" href="/auth/logout/">{{user.username}}</a></li>
+         
+        {%else%}
+
+            <li><a class="link" href="/auth/login/">Inicio de sesion</a></li>
+            <li><a class="link" href="/auth/singup/">Registrarce</a></li>
+
+        {%endif%}
+
     </ul>
 </nav>

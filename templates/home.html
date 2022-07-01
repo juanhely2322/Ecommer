@@ -3,13 +3,15 @@
 
 {% block main %}
 
-    <h1>ZAPATOS</h1>
+    <h1>BEBIDAS</h1>
         <section class="product">
             {%for product in products %}
                 <article >
                     <h2>{{product.name}}</h2>
                     <p>Presio: ${{product.price}}</p>
-                    <a href="/cart/add/{{ product.id }}">Agregar al carrito</a>
+                    {%if user.is_authenticated%}
+                        <a href="/cart/add/{{ product.id }}">Agregar al carrito</a>
+                    {%endif%}
                     <img class="image" src="{{product.image}}" >
                     
                 </article>

@@ -36,11 +36,11 @@ def sungup_view(request):
         last_name=request.POST["last_name"]
         username=request.POST["username"]
         password=request.POST["password"]
-        password_confimation=request.POST["password_confimation"]
+        password_confimation=request.POST["password_confirmation"]
         email=request.POST["email"]
         
         if password_confimation!=password:
-            return render("/registro_user.html",{"error":"La contraseña no concuerda"})
+            return render(request,"registro_user.html",{"error":"La contraseña no concuerda"})
         
         try:
             new_user=User.objects.create_user(username,email,password)
@@ -50,9 +50,9 @@ def sungup_view(request):
             login(request,new_user)
             return redirect("/")
         except IntegrityError:
-            return render(request,"/registro_user.html",{"error":"El usuario ya esta registrado"})
+            return render(request,"registro_user.html",{"error":"El usuario ya esta registrado"})
         
-    return render(request,"/registro_user.html")
+    return render(request,"registro_user.html")
             
             
          

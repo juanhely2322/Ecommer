@@ -1,8 +1,16 @@
-
 {%extends "index.html"%}
+
 {% block title %}Cart{% endblock %}
 
 {% block main %}
-
+<h1>Cart</h1>
+ {%for cartItem in products%}
+     <article>
+        <h3>{{cartItem.product.name}}</h3>
+        <p>Amount: {{cartItem.amount}}</p>
+        <img class="image" src="{{cartItem.product.image}}" >
+        <a href="/cart/delete/{{cartItem.id}}">Eliminar</a>
+     </article>
+    {%endfor%}
 
 {% endblock %}

@@ -1,11 +1,14 @@
 from django.shortcuts import redirect, render
 from .models import Cart, cartItem
 from tienda.models import product
-import requests
+
 # Create your views here.
 
 def get_cart (request):
-    return render(request,"cart.html")
+    if request.user.is_authenticated:
+        products=request.user.cart.products.all()
+        return render(request,"cart.html",{"products":products})
+    return redirect("/")
 
 def add_to_cart(request,idProduct):
     if request.user.is_authenticated:
@@ -29,3 +32,12 @@ def add_to_cart(request,idProduct):
         cartitem.save()
             
     return redirect("/")
+
+
+def delete_from_cart(request,idCartItem):
+     if request.user.is_authenticated:
+         caritem= cartItem.objects.get(pk=idCartItem)
+         if caritem.cart.user==request.user:
+            caritem.delete()
+         return redirect("/cart")
+     return redirect("/")

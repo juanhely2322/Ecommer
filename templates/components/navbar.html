@@ -5,11 +5,11 @@
         {%if user.is_authenticated%}
 
          <li><a class="link" href="/auth/logout/">{{user.username}}</a></li>
-         
+         <li><a  class="link" href="/cart">Carrito({{user.cart.products.all.count}})</a></li>
         {%else%}
 
             <li><a class="link" href="/auth/login/">Inicio de sesion</a></li>
-            <li><a class="link" href="/auth/singup/">Registrarce</a></li>
+            <li><a class="link" href="/auth/signup/">Registrarce</a></li>
 
         {%endif%}
 
